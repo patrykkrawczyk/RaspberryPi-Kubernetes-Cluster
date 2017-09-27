@@ -14,6 +14,8 @@ I've built RPi cluster, which is now used as my personal server for hosting and 
   * `sudo git clone https://github.com/patrykkrawczyk/RPiClusterCloud.git`
 * Move to installation directory
   * `cd RPiClusterCloud/nodes`
+* Add required permissions to installation script
+  * `sudo chmod 755 ./setup_node.sh`
 * Execute installation script
   * Regular: `sudo ./setup_node.sh`
   * Master: `sudo ./setup_node.sh master`
