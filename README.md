@@ -3,6 +3,7 @@ I've built RPi cluster, which is now used as my personal server for hosting and 
 
 ## Information
 * OS: RASPBIAN STRETCH LITE
+* Photos: https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
 
 ## Installation instructions
 * Install git
