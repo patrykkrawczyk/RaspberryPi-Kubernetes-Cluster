@@ -7,8 +7,6 @@ I've built RPi cluster, which is now used as my personal server for hosting and 
 * Photos: https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
 
 ## Installation instructions
-* Install git
-  * `sudo apt install git -y`
 * Download this repository
   * `wget https://github.com/patrykkrawczyk/RPiClusterCloud/archive/master.zip`
 * Unzip downloaded repository
