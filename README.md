@@ -18,4 +18,5 @@ I've built RPi cluster, which is now used as my personal server for hosting and 
 * Add required permissions to installation script
   * `sudo chmod 755 ./setup_node.sh`
 * Execute installation script on each node
-  * `sudo ./setup_node.sh`
+  * `sudo ./setup_node.sh hostname node_ip router_ip`
+  * `sudo ./setup_node.sh rpinode 192.168.0.102 192.168.0.1`
