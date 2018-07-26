@@ -3,20 +3,19 @@ I've built RPi cluster, which is now used as my personal server for hosting and 
 
 ## Information
 * OS: RASPBIAN STRETCH LITE
+* https://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2017-12-01/
 * Photos: https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
 
 ## Installation instructions
 * Install git
   * `sudo apt install git -y`
-* Prepare repository location
-  * `[ -d /repository ] || sudo mkdir /repository`
-  * `cd /repository`
-* Clone this repository
-  * `sudo git clone https://github.com/patrykkrawczyk/RPiClusterCloud.git`
+* Download this repository
+  * `wget https://github.com/patrykkrawczyk/RPiClusterCloud/archive/master.zip`
+* Unzip downloaded repository
+  * `unzip master.zip`
 * Move to installation directory
-  * `cd RPiClusterCloud/nodes`
+  * `cd RPiClusterCloud-master`
 * Add required permissions to installation script
   * `sudo chmod 755 ./setup_node.sh`
-* Execute installation script
-  * Regular: `sudo ./setup_node.sh`
-  * Master: `sudo ./setup_node.sh master`
+* Execute installation script on each node
+  * `sudo ./setup_node.sh`
