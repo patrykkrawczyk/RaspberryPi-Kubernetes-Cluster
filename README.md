@@ -89,11 +89,13 @@ Photos - https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
 
 1. `ip_addresses`, `node_addresses.txt`, `node_hostnames.txt` has the same number of lines
 2. All rows within these files refer to the same node
+
     | ip_addresses | node_addresses | node_hostnames |
-    |--|--|--|
+    |---|---|---|
     | 192.168.0.204 | 192.168.0.101 | rpinode01 |
     | 192.168.0.205 | 192.168.0.102 | rpinode02 |
     | 192.168.0.202 | 192.168.0.103 | rpinode03 |
+
     Such configuration would result in 3 node cluster where
     - rpinode01 is a Master Node with static IP 192.168.0.101
     - rpinode02 is a Slave Node with static IP 192.168.0.102
