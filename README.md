@@ -61,7 +61,7 @@ Photos - https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
 2. Log in to your router administration panel, usually you can find credentials on the sticker on the back of your router
 3. Find out IP addresses of your Raspberry Pi nodes in your network
 4. Edit `ip_addresses.txt` file in `RPiClusterCloud` directory
-    - `nano ip_addresses.txt`
+    - `nano resources/ip_addresses.txt`
 5. Write all of the node IP addresses in separate lines
      - **Make sure to specify your Master Node IP address in the first line**
 
@@ -70,7 +70,7 @@ Photos - https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
 #### Here we'll define static IP addresses that should be assigned to each node after Cluster setup is complete
 
 1. Edit `node_addresses.txt` file in `RPiClusterCloud` directory
-    - `nano node_addresses.txt`
+    - `nano resources/node_addresses.txt`
 2. Write all of the desired static node IP addresses in separate lines
     - **Make sure to specify your Master Node desired static IP address in the first line**
 
@@ -79,7 +79,7 @@ Photos - https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
 #### Here we'll define hostnames that should be assigned to each node after Cluster setup is complete
 
 1. Edit `node_hostnames.txt` file in `RPiClusterCloud` directory
-    - `nano node_hostnames.txt`
+    - `nano resources/node_hostnames.txt`
 2. Write all of the desired node hostnames in separate lines
     - **Make sure to specify your Master Node desired hostname in the first line**
 
@@ -105,16 +105,5 @@ Photos - https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
 
 1. Script assumes default Raspberry Pi credentials which are
    - `pi / raspberry`
-
-<!-- 1.  `sudo -i`
-1.  Download this repository
-2.  `wget https://github.com/patrykkrawczyk/RPiClusterCloud/archive/master.zip`
-3.  Unzip downloaded repository
-4.  `unzip master.zip`
-5.  Move to installation directory
-6.  `cd RPiClusterCloud-master`
-7.  Add required permissions to installation script
-8.  `sudo chmod 755 ./setup_node.sh`
-9.  Execute installation script on each node
-10. `sudo ./setup_node.sh hostname node_ip router_ip`
-11. `sudo ./setup_node.sh rpinode 192.168.0.102 192.168.0.1` -->
+2. Execute `setup_cluster.sh` script with `router_id` as argument and `sudo` rights
+   - `sudo ./scripts/setup_cluster.sh 192.168.0.1`
