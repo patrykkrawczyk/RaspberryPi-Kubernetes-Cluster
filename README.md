@@ -1,7 +1,7 @@
 
 # RaspberryPi Kubernetes Cluster
 
-Here I'm sharing details on how to start your own in-house Kubernetes cluster using multiple Raspberry Pi computers. This can be beneficial for the development of your own projects and gives you a fun tool to play aroudn with.
+Here I'm sharing details on how to start your own in-house Kubernetes cluster using multiple Raspberry Pi computers. This can be beneficial for the development of your own projects and gives you a fun tool to play around with.
 
 I've built my cluster with these methods and now using it as my personal server for hosting and practicing cloud development.
 
@@ -19,6 +19,8 @@ Photos - https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
 ## Tutorial
 
 ### Step I - Prepare each Raspberry Pi
+
+#### **Installation of a cluster should be done on a fresh system to avoid any conflicts.**
 
 1. Download Raspbian Lite Operating System
    - `https://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2017-12-01/`
