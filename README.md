@@ -66,6 +66,7 @@ Photos - https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
     - `nano resources/ip_addresses.txt`
 5. Write all of the node IP addresses in separate lines
      - **Make sure to specify your Master Node IP address in the first line**
+     - **Make sure that these addresses don't collide with addresses specified in node_addresses.txt**
 
 ### Step IV - Configure `node_addresses` file
 
@@ -75,6 +76,7 @@ Photos - https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
     - `nano resources/node_addresses.txt`
 2. Write all of the desired static node IP addresses in separate lines
     - **Make sure to specify your Master Node desired static IP address in the first line**
+    - **Make sure that these addresses don't collide with addresses specified in ip_addresses.txt**
 
 ### Step V - Configure `node_hostnames` file
 
@@ -109,3 +111,4 @@ Photos - https://photos.app.goo.gl/xIVB6uBk3uCoifJX2
    - `pi / raspberry`
 2. Execute `setup_cluster.sh` script with `router_id` as argument and `sudo` rights
    - `sudo ./scripts/setup_cluster.sh 192.168.0.1`
+3. If anything goes wrong you can look at /var/log/setup_*.log files on each node file system

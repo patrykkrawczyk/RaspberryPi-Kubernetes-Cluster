@@ -34,6 +34,18 @@ else
     echo "SETUP_CLUSTER | This configuration is available for initialization" | tee -a /var/log/setup_cluster.log
 fi
 
+echo "SETUP_CLUSTER | Checking if all devices are available on network..." | tee -a /var/log/setup_cluster.log
+for ((i=0; i < ${#ips[@]}; i++)); do
+    printf 'SETUP_CLUSTER | Checking IP: %s...\n' ${ips[$i]} | tee -a /var/log/setup_cluster.log
+    ping -c 1 ${ips[$i]} &> /dev/null
+    if [ $? -eq 0 ]; then
+        printf 'SETUP_CLUSTER | IP: %s is available.\n' ${ips[$i]} | tee -a /var/log/setup_cluster.log
+    else
+        printf 'SETUP_CLUSTER | Device at IP: %s is unavailable!\n' ${ips[$i]} | tee -a /var/log/setup_cluster.log
+        exit 1;
+    fi
+done
+
 echo "SETUP_CLUSTER | Checking if sshpass is already installed..." | tee -a /var/log/setup_cluster.log
 dpkg -s sshpass &>> /dev/null
 
@@ -46,7 +58,7 @@ fi
 
 echo "SETUP_CLUSTER | Initializing all nodes..." | tee -a /var/log/setup_cluster.log
 for ((i=0; i < ${#ips[@]}; i++)); do
-    echo "SETUP_CLUSTER | Initializing node: ${hostnames[$i]}..." | tee -a /var/log/setup_cluster.log
+    printf 'SETUP_CLUSTER | Initializing node: %s...\n' ${hostnames[$i]} | tee -a /var/log/setup_cluster.log
     sshpass -p $password ssh -o StrictHostKeyChecking=no $username@${ips[$i]} sudo bash -s < ./setup_node.sh ${hostnames[$i]} ${sips[$i]} $dns
 done
 
@@ -67,7 +79,7 @@ echo "SETUP_CLUSTER | Setting up Master Node..." | tee -a /var/log/setup_cluster
 sshpass -p $password ssh -o StrictHostKeyChecking=no $username@${sips[0]} sudo bash -s < ./setup_master.sh ${hostnames[0]} $token
 
 for ((i=1; i < ${#sips[@]}; i++)); do
-    echo "SETUP_CLUSTER | Connecting node: ${hostnames[$i]} to Master Node..." | tee -a /var/log/setup_cluster.log
+    printf 'SETUP_CLUSTER | Connecting node: %s to Master Node...\n' ${hostnames[$i]} | tee -a /var/log/setup_cluster.log
     sshpass -p $password ssh -o StrictHostKeyChecking=no $username@${sips[$i]} sudo bash -s < ./setup_slave.sh ${hostnames[$i]} ${sips[0]} $token
 done
 

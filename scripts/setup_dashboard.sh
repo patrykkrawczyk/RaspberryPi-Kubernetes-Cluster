@@ -14,10 +14,10 @@ touch /var/log/setup_dashboard.log
 hostname=$1 # should be of format: rpinode
 ip=$2 # should be of format: 192.168.0.101
 
-echo "$hostname | Setting current working directory to script directory..." | tee -a /var/log/setup_dashboard.log
+printf '%s | Setting current working directory to script directory...\n' $hostname | tee -a /var/log/setup_dashboard.log
 cd "$(dirname "$0")"
 
-echo "$hostname | Generating Kubernetes Dashboard configuration file..." | tee -a /var/log/setup_dashboard.log
+printf '%s | Generating Kubernetes Dashboard configuration file...\n' $hostname | tee -a /var/log/setup_dashboard.log
 cat <<EOT >> $HOME/kubeDashboardConfig.yaml
 # Copyright 2017 The Kubernetes Authors.
 #
@@ -171,18 +171,18 @@ spec:
   type: NodePort
 EOT
 
-echo "$hostname | Setting KUBECONFIG environment variable..." | tee -a /var/log/setup_dashboard.log
+printf '%s | Setting KUBECONFIG environment variable...\n' $hostname | tee -a /var/log/setup_dashboard.log
 export KUBECONFIG=$HOME/.kube/config
 
-echo "$hostname | Initializing Kubernetes Dashboard on Master Node..." | tee -a /var/log/setup_dashboard.log
+printf '%s | Initializing Kubernetes Dashboard on Master Node...\n' $hostname | tee -a /var/log/setup_dashboard.log
 kubectl apply -f $HOME/kubeDashboardConfig.yaml --validate=false &>> /var/log/setup_dashboard.log
 
-echo "$hostname | Adding permissions to Kubernetes Dashboard Service Account..." | tee -a /var/log/setup_dashboard.log
+printf '%s | Adding permissions to Kubernetes Dashboard Service Account...\n' $hostname | tee -a /var/log/setup_dashboard.log
 kubectl create clusterrolebinding kubernetes-dashboard -n kube-system --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard &>> /var/log/setup_dashboard.log
 
-echo "$hostname | Kubernetes Dashboard initialization complete!" | tee -a /var/log/setup_dashboard.log
+printf '%s | Kubernetes Dashboard initialization complete!\n' $hostname | tee -a /var/log/setup_dashboard.log
 
 NODE_PORT=$(kubectl get services/kubernetes-dashboard -n kube-system -o go-template='{{(index .spec.ports 0).nodePort}}')
 
-echo "$hostname | You can access Kubernetes Dashboard at: $ip:$NODE_PORT" | tee -a /var/log/setup_dashboard.log
+printf '%s | You can access Kubernetes Dashboard at: %s:%s\n' $hostname $ip $NODE_PORT | tee -a /var/log/setup_dashboard.log
 
